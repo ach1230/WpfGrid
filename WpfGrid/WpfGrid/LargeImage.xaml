@@ -1,0 +1,13 @@
+﻿<Window x:Class="WpfGrid.LargeImage"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfGrid"
+        mc:Ignorable="d"
+        Title="LargeImage" Height="480.738" Width="795.082" WindowStyle="None">
+    <Grid>
+        <Image x:Name="imgLargeImage" Margin="0"/>
+
+    </Grid>
+</Window>
