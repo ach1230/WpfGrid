@@ -2,7 +2,6 @@
 using System.IO;
 using System.Windows;
 using System.Windows.Controls;
-//using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
 
@@ -26,8 +25,6 @@ namespace WpfGrid
         {
             using (var dialog = new System.Windows.Forms.FolderBrowserDialog())
             {
-                //grdImage.ShowGridLines = true;                
-                dialog.SelectedPath = @"Z:\folder\JAV\Y\Yumeno Aika(夢乃あいか)★★★";
                 if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
                     string path = dialog.SelectedPath;
@@ -47,12 +44,12 @@ namespace WpfGrid
                             grdImage.RowDefinitions.Add(rowDef);
 
                             Image image = new Image();
-                            image.HorizontalAlignment = System.Windows.HorizontalAlignment.Left;
+                            image.HorizontalAlignment = HorizontalAlignment.Left;
                             image.VerticalAlignment = VerticalAlignment.Stretch;
 
-                            image.MouseEnter += new System.Windows.Input.MouseEventHandler(this.Image_MouseEvent);
-                            image.MouseLeave += new System.Windows.Input.MouseEventHandler(this.Image_MouseLeave);
-                            image.MouseMove += new System.Windows.Input.MouseEventHandler(this.Image_MouseMove);
+                            image.MouseEnter += new MouseEventHandler(this.Image_MouseEvent);
+                            image.MouseLeave += new MouseEventHandler(this.Image_MouseLeave);
+                            image.MouseMove += new MouseEventHandler(this.Image_MouseMove);
 
                             BitmapImage bitmap = new BitmapImage();
                             bitmap.BeginInit();
@@ -64,11 +61,11 @@ namespace WpfGrid
                             Grid.SetRow(image, row);
                             grdImage.Children.Add(image);
 
-                            var label = new System.Windows.Controls.Label();
+                            var label = new Label();
                             //Thickness margin = label.Margin;
                             //margin.Left = grdImage.RenderSize.Width + 10;
                             //label.Margin = margin;
-                            label.HorizontalContentAlignment = System.Windows.HorizontalAlignment.Left;
+                            label.HorizontalContentAlignment = HorizontalAlignment.Left;
                             label.VerticalContentAlignment = VerticalAlignment.Center;
                             label.Content = file.Name.Replace(file.Extension, string.Empty);
 
@@ -107,6 +104,16 @@ namespace WpfGrid
             {
                 wndLargeImage.Top = this.Top + point.Y + 30;
             }
+
+            if (wndLargeImage.Top < 0)
+            {
+                wndLargeImage.Top = 0;
+            }
+        }
+
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            wndLargeImage.Close();
         }
     }
 }
